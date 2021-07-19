@@ -1,0 +1,250 @@
+* {
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.theme-light {
+  --main-background: hsl(0, 0%, 90%);
+  --keypad-background: hsl(0, 5%, 81%);
+  --display-background: hsl(0, 0%, 93%);
+  --key1-background: hsl(185, 42%, 37%);
+  --key1-shadow: hsl(185, 58%, 25%);
+  --key2-background: hsl(25, 98%, 40%);
+  --key2-shadow: hsl(25, 99%, 27%);
+  --key3-background: hsl(45, 7%, 89%);
+  --key3-shadow: hsl(35, 11%, 61%);
+  --text1: hsl(60, 10%, 19%);
+  --text2: hsl(0, 0, 100%);
+  --logo-color: hsl(60, 10%, 19%);
+  --display-color: hsl(60, 10%, 19%);
+}
+
+.theme-dark {
+  --main-background: hsl(222, 26%, 31%);
+  --keypad-background: hsl(223, 31%, 20%);
+  --display-background: hsl(224, 36%, 15%);
+  --key1-background: hsl(225, 21%, 49%);
+  --key1-shadow: hsl(224, 28%, 35%);
+  --key2-background: hsl(6, 63%, 50%);
+  --key2-shadow: hsl(6, 70%, 34%);
+  --key3-background: hsl(30, 25%, 89%);
+  --key3-shadow: hsl(28, 16%, 65%);
+  --text1: hsl(221, 14%, 31%);
+  --text2: hsl(0, 0, 100%);
+  --logo-color: hsl(0, 0, 100%);
+  --display-color: hsl(0, 0, 100%);
+}
+
+body {
+  background-color: var(--main-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+
+  width: 35%;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 32px;
+  color: var(--logo-color);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 25px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 40px;
+  width: 40px;
+  left: 0px;
+  bottom: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  box-shadow: 0 0px 15px #2020203d;
+
+  background: var(--key1-background) url("https://i.ibb.co/7JfqXxB/sunny.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input:checked + .slider {
+  background-color: hsl(224, 36%, 15%);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px hsl(224, 36%, 15%);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(40px);
+  background: var(--key1-background) url("https://i.ibb.co/FxzBYR9/night.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.display {
+  height: 80px;
+  width: 100%;
+  background-color: var(--display-background);
+  border-radius: 5px;
+  margin-top: 1rem;
+  text-align: right;
+  color: var(--display-color);
+  font-size: 32px;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.output {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.subdisplay {
+  font-size: 10px;
+  color: var(--main-background);
+  text-align: right;
+  margin-bottom: 0.5rem;
+}
+
+.displayOp {
+  background: none;
+  border: none;
+  outline: none;
+  text-align: right;
+  font-size: 32px;
+  color: var(--display-color);
+}
+
+.keypad {
+  width: 100%;
+  height: 50vh;
+  background-color: var(--keypad-background);
+  margin-top: 1rem;
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.keyrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.num {
+  width: 30%;
+  height: 40px;
+  background-color: var(--key3-background);
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: 1px 3px var(--key3-shadow);
+  font-size: 20px;
+  color: var(--text1);
+  margin: 0.5rem;
+}
+
+.delete {
+  width: 30%;
+  height: 40px;
+  background-color: var(--key1-background);
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: 1px 3px var(--key1-shadow);
+  font-size: 20px;
+  color: white;
+  margin: 0.5rem;
+}
+
+.reset {
+  width: 45%;
+  height: 40px;
+  background-color: var(--key1-background);
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: 1px 3px var(--key1-shadow);
+  font-size: 20px;
+  color: white;
+  margin: 0.5rem;
+}
+
+.equal {
+  width: 45%;
+  height: 40px;
+  background-color: var(--key2-background);
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: 1px 3px var(--key2-shadow);
+  font-size: 20px;
+  color: white;
+  margin: 0.5rem;
+}
